@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{title}}</title>
+</head>
+<body>
+	<h3>{{title}}</h3>
+	<br>
+	<button [routerLink]="['/crear']" type="button" class="btn btn-success">Crear nuevo usuario</button>
+
+	<br>
+	<br>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<td>ID</td>
+				<td>Nombre</td>
+				<td>Apellido(s)</td>
+				<td></td>
+				<td></td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor = "let usuario of usuarios">
+				<td>{{usuario.id}}</td>
+				<td>{{usuario.nombre}}</td>
+				<td>{{usuario.apellido}}</td>
+				<td><button [routerLink]="['/editar/', usuario.id]" type="button" class="btn btn-primary"> Editar </button></td>
+				<td><button (click) = "eliminarUsuario(usuario.id)" type="button" class="btn btn-danger"> Eliminar </button></td>
+			</tr>
+		</tbody>		
+
+	</table>
+
+	<!-- <ul >
+	  <li *ngFor = "let usuario of usuarios">
+	    <span>{{usuario.id}}</span> {{usuario.nombre}} 
+		<button [routerLink]="['/editar/', usuario.id]"> Editar </button>
+		<button (click) = "eliminarUsuario(usuario.id)"> Eliminar </button>
+		</li>
+	</ul> -->
+
+</body>
+</html>

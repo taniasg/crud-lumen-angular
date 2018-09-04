@@ -1,0 +1,65 @@
+<h3>{{title}}</h3>
+<br>
+<div class="row" *ngIf= "respuesta; else cargandoUsuario">
+	<form [formGroup] = "formAgregarUsuario" class="form-horizontal">
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="nombre">Nombre:</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="nombre" placeholder="Ingresar nombre" name="nombre" id = "nombre" formControlName = "nombre" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="apellido">Apellido(s):</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="nombre" placeholder="Ingresar apellido(s)" name="apellido" id = "apellido" formControlName = "apellido" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="edad">Edad:</label>
+            <div class="col-sm-8">
+                <input type="number" class="form-control" id="edad" placeholder="Ingresar edad" name="edad" id = "edad" formControlName = "edad" required>
+            </div>
+        </div>
+
+        <div class="form-group">        
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" 
+                            [disabled]="!formAgregarUsuario.valid"
+                            (click) = "editarUsuario()"
+                            *ngIf="editar"
+                            class="btn btn-success">                           
+                            Guardar
+            </button>
+
+            <button type="submit" 
+                                [disabled]="!formAgregarUsuario.valid" 
+                                (click)="crearUsuario()"
+                                *ngIf="!editar"
+                                class="btn btn-success">
+                                Guardar
+            </button>
+
+            <button [routerLink]="['/']" routerLinkActive="active"  type = "button" class="btn btn-primary">
+                    Atrás
+            </button>
+
+            
+          </div>
+          <div class="col-sm-offset-1 col-sm-10">
+            
+          </div>
+        </div>
+
+        
+
+	</form>
+</div>
+
+<!-- Mientras no haya respuesta, se mostrará un loader -->
+
+<ng-template #cargandoUsuario>
+    <div id="loader"></div>
+</ng-template>
